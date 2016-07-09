@@ -31,11 +31,13 @@
                 <!--<p>Put the dish details here</p>-->
                 <div class="media">
                     <div class="media-left media-middle">
-                        <a href="#"><img class="media-object img-thumbnail" ng-src={{dishDetailCtrl.dish.image}}></a>
-                        <p>Name: {{dishDetailCtrl.dish.name}}</p>
+                        <a href="#"><img class="media-object img-thumbnail" ng-src={{dishDetailCtrl.dish.image}} alt="Uthapizza"></a>
                     </div>
                     <div class="media-body">
-                        
+                        <h2 class="media-heading">{{dishDetailCtrl.dish.name}}
+                            <span class="label label-danger">{{dishDetailCtrl.dish.label}}</span>
+                            <span class="badge">{{dishDetailCtrl.dish.price | currency}}</span></h2>
+                            <p>{{dishDetailCtrl.dish.description}}</p>
                     </div>
                 </div>
             </div>
