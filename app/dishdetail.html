@@ -57,6 +57,11 @@
 						<!--<p>Task 3: Here you include the code to show the live preview of the comment</p>
 						<p>The comment should be shown only when the form contains valid
 						information and is not pristine</p>-->
+                        <blockquote ng-show="commentForm.$valid">
+                            <p>{{comment.rating}} Stars</p>
+                            <p>{{comment.comment}}</p>
+                            <footer>{{comment.author}}, {{comment.date | date}}</footer>
+                        </blockquote>
                     </ul>
                 <form class="form-horizontal" name="commentForm" ng-submit="submitComment()" novalidate>
 					<!--<p>Task 1: Design the form to submit the comments</p>-->
