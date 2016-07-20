@@ -257,6 +257,8 @@ angular.module('confusionApp')
                 return leadership[index];
 
             };
+
+            return corpfac;
         })
 
 ;
