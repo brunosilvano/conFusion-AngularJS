@@ -118,6 +118,7 @@ angular.module('confusionApp')
 
             $scope.showDish = false;
             $scope.showPromotion =false;
+            $scope.showLeader = false;
             $scope.message="Loading ...";
 
             $scope.featured = menuFactory.getDishes().get({id:0})
@@ -141,11 +142,31 @@ angular.module('confusionApp')
                     $scope.message = "Error: " + response.status + " " + response.statusText;
                 });
                 
-            $scope.chef = corporateFactory.getLeader(3);
+            $scope.chef = corporateFactory.getLeaders().get({id:3})
+            .$promise.then(
+                function(response) {
+                    $scope.chef = response;
+                    $scope.showLeader = true;
+                },
+                function(response) {
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                });;
         }])
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
-            $scope.leadership = corporateFactory.getLeaders();
+
+            $scope.showLeaderboard = false;
+            $scope.message="Loading ...";
+
+            $scope.leadership = corporateFactory.getLeaders()
+            .query(
+                function(response) {
+                    $scope.dishes = response;
+                    $scope.showLeaderboard = true;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                });;
         }])
 
 

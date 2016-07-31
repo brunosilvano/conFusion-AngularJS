@@ -56,6 +56,9 @@
                 <h2>Corporate Leadership</h2>
                <ul class="media-list">
 					<!--<h4>Implement the Corporate Leaders List here</h4>-->
+                    <div ng-if="!showLeaderboard">
+                        <h3>{{message}}</h3>
+                    </div>
                     <li class="media" ng-repeat="leader in leadership">
                         <div class="media-left media-middle">
                         <a href="#"><img class="media-object img-thumbnail" ng-src={{leader.image}} alt="{{leader.name}}"></a>
