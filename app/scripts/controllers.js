@@ -117,6 +117,7 @@ angular.module('confusionApp')
         .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
             $scope.showDish = false;
+            $scope.showPromotion =false;
             $scope.message="Loading ...";
 
             $scope.featured = menuFactory.getDishes().get({id:0})
@@ -126,10 +127,20 @@ angular.module('confusionApp')
                     $scope.showDish = true;
                 },
                 function(response) {
-                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
                 }
             );
-            $scope.promotion = menuFactory.getPromotion(0);
+
+            $scope.promotion = menuFactory.getPromotion().get({id:0})
+            .$promise.then(
+                function(response) {
+                    $scope.promotion = response;
+                    $scope.showPromotion = true;
+                },
+                function(response) {
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                });
+                
             $scope.chef = corporateFactory.getLeader(3);
         }])
 
